@@ -1,5 +1,5 @@
 module Lendesk
-  class Runner
+  class GenerateCSV
 
     class << self
       def call(output_filename: 'image_gps_info.csv', path: nil)

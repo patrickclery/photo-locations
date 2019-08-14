@@ -1,4 +1,4 @@
-RSpec.describe Lendesk::Runner do
+RSpec.describe Lendesk::GenerateCSV do
 
   include_context 'stub_filenames_and_images'
 
@@ -18,9 +18,6 @@ RSpec.describe Lendesk::Runner do
     fail
   end
   it 'scans the current working directory by default' do
-    allow(Dir).to receive(:glob)
-                    .with("#{Dir.pwd}/**/*.jpg")
-                    .and_return(filenames)
     expect(Dir).to receive(:glob)
                      .with("#{Dir.pwd}/**/*.jpg")
 
@@ -29,16 +26,12 @@ RSpec.describe Lendesk::Runner do
 
   it 'accepts a directory as an optional parameter' do
     pending
-    fail
+    expect(subject).to respond_to(:call).with(path: '/fake/dir')
   end
 
   context 'output in different formats' do
-    it 'can output to CSV' do
-      pending
-      fail
-    end
     it 'can output to HTML' do
-      pending
+      subject.call(format: :html)
       fail
     end
   end
