@@ -17,22 +17,4 @@ RSpec.describe Lendesk::GenerateCSV do
     pending
     fail
   end
-  it 'scans the current working directory by default' do
-    expect(Dir).to receive(:glob)
-                     .with("#{Dir.pwd}/**/*.jpg")
-
-    subject.call(output_filename: tmp_file.path)
-  end
-
-  it 'accepts a directory as an optional parameter' do
-    pending
-    expect(subject).to respond_to(:call).with(path: '/fake/dir')
-  end
-
-  context 'output in different formats' do
-    it 'can output to HTML' do
-      subject.call(format: :html)
-      fail
-    end
-  end
 end
