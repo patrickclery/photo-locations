@@ -1,12 +1,5 @@
 require "bundler/setup"
-require "tinder"
-require 'hashdiff'
-
-require "rspec"
-require 'webmock/rspec'
-
-# Awesome Print init
-require 'awesome_print'
+require "./app/lendesk"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
@@ -19,5 +12,3 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 end
-
-WebMock.enable!
