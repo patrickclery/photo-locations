@@ -1,4 +1,5 @@
 require "bundler/setup"
+
 require "./app/lendesk"
 
 RSpec.configure do |config|

@@ -2,7 +2,7 @@ RSpec.describe Lendesk::GetDirectoryImages do
 
   subject { described_class }
 
-  let(:images) {
+  let(:filenames) {
     [
       "assets/images/resume/barchart.jpg",
       "assets/images/resume/rubymine_macbook_pro.jpg",
@@ -13,21 +13,28 @@ RSpec.describe Lendesk::GetDirectoryImages do
   }
 
   before do
+    # Return 5 fake filenames if the app to read the directory
     allow(Dir).to receive(:glob)
                     .with("/fake/dir/**/*.jpg")
-                    .and_return(images)
+                    .and_return(filenames)
+
+    # Return fake image EXIF if the app access IO.read
+    filenames.each do |filename|
+      allow(IO).to receive(:read)
+                     .with(filename)
+                     .and_return File.open('./spec/data/DSCN0010.jpg')
+    end
   end
 
   it { should respond_to(:call).with(2).arguments }
 
   it 'recursively reads all of the images from the supplied directory of images' do
-    expect(subject.call(path: "/fake/dir")).to be_a(Array)
-    expect(subject.call(path: "/fake/dir").size).to be(5)
+    images = subject.call(path: "/fake/dir")
+    expect(images).to be_a(Array)
+    expect(images.size).to be(5)
+    expect(images.all? { |obj| obj.kind_of?(Hash) }).to be true
   end
 
-  it 'extracts their EXIF GPS data (longitude and latitude)' do
-    pending
-  end
   it 'writes the name of that image' do
     pending
   end
