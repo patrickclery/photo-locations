@@ -1,6 +1,9 @@
 RSpec.describe Lendesk::Runner do
 
-  subject { described_class }
+  include_context 'stub_filenames_and_images'
+
+  let(:tmp_filename) { 'rspec.csv' }
+  let(:tmp_file) { Tempfile.new(tmp_filename) }
 
   it 'calls the service to loop through images' do
     expect(Lendesk::GetDirectoryImages).to receive(:call)
@@ -8,11 +11,16 @@ RSpec.describe Lendesk::Runner do
     subject.call('/fake/dir')
   end
 
-  it 'outputs the name of that image' do
-    pending
+  it 'should create a new CSV file' do
+    subject.call(output_filename:   tmp_file.path,
+                 working_directory: '/fake/dir')
+
+    csv = CSV.readlines(tmp_file.path)
+    expect(csv.size).to eq(6)
   end
-  it 'GPS co-ordinates it finds to a CSV file' do
-    pending
+
+  it 'writes co-ordinates it finds to a CSV file' do
+    expect(File).to receive(:write)
   end
   it 'is executable from the command-line' do
     pending

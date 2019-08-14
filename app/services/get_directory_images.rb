@@ -16,7 +16,7 @@ module Lendesk
       private
 
       def extract_image_info(filename)
-        EXIFR::JPEG.new(IO.read(filename)).tap do |info|
+        EXIFR::JPEG.new(filename).tap do |info|
           return {
             filename:  filename,
             latitude:  info.gps.latitude,

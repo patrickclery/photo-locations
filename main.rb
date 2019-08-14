@@ -4,3 +4,6 @@
 #   With no parameters, the utility should default to scanning from the current directory. It should take an optional parameter that allows any other directory to be passed in.
 #
 #   As a bonus, output either CSV or HTML, based on a parameter passed in via the command line.
+
+require 'app/lendesk'
+require 'app/services/directory_reader'
