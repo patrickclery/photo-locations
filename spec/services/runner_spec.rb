@@ -21,6 +21,9 @@ RSpec.describe Lendesk::Runner do
     allow(Dir).to receive(:glob)
                     .with("#{Dir.pwd}/**/*.jpg")
                     .and_return(filenames)
+    expect(Dir).to receive(:glob)
+                     .with("#{Dir.pwd}/**/*.jpg")
+
     subject.call(output_filename: tmp_file.path)
   end
 
