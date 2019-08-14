@@ -2,6 +2,12 @@ RSpec.describe Lendesk::Runner do
 
   subject { described_class }
 
+  it 'calls the service to loop through images' do
+    expect(Lendesk::GetDirectoryImages).to receive(:call)
+                                             .with(path: "/fake/dir")
+    subject.call('/fake/dir')
+  end
+
   it 'outputs the name of that image' do
     pending
   end

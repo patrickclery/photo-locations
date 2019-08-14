@@ -26,8 +26,6 @@ RSpec.describe Lendesk::GetDirectoryImages do
     end
   end
 
-  it { should respond_to(:call).with(2).arguments }
-
   it 'recursively reads all of the images from the supplied directory of images' do
     images = subject.call(path: "/fake/dir")
     expect(images).to be_a(Array)
