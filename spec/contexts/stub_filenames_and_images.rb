@@ -24,7 +24,7 @@ RSpec.shared_context "stub_filenames_and_images" do
     # Return fake image EXIF if the app access IO.read
     filenames.each do |filename|
       allow(EXIFR::JPEG).to receive(:new)
-                              .with(filename)
+                              .with(any_args)
                               .and_return(exif)
     end
   end
