@@ -16,9 +16,9 @@ RSpec.shared_context "stub_filenames_and_images" do
   let!(:exif) { EXIFR::JPEG.new('./spec/data/DSCN0010.jpg') }
 
   before(:each) do
-    # Return 5 fake filenames if the app to read the directory
+    # Return 5 fake filenames if the app to read a directory
     allow(Dir).to receive(:glob)
-                    .with("/fake/dir/**/*.jpg")
+                    .with(any_args)
                     .and_return(filenames)
 
     # Return fake image EXIF if the app access IO.read
