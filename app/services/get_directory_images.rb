@@ -6,7 +6,7 @@ module Lendesk
     class << self
       # @param path The diretory (default: current working dir)
       # @param format What format to return it in (default: CSV)
-      def call(path: nil, format: :csv)
+      def call(path)
         path ||= Dir.pwd
         Dir.glob("#{path}/**/*.jpg").map do |filename|
           extract_image_info(filename)

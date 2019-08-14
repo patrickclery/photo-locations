@@ -66,3 +66,4 @@ Gemfile.lock
 
 # RubyMine IDE
 /.idea/
+/image_gps_info.csv

@@ -5,39 +5,38 @@ RSpec.describe Lendesk::Runner do
   let(:tmp_filename) { 'rspec.csv' }
   let(:tmp_file) { Tempfile.new(tmp_filename) }
 
-  it 'calls the service to loop through images' do
-    expect(Lendesk::GetDirectoryImages).to receive(:call)
-                                             .with(path: "/fake/dir")
-    subject.call('/fake/dir')
-  end
-
   it 'should create a new CSV file' do
-    subject.call(output_filename:   tmp_file.path,
-                 working_directory: '/fake/dir')
+    subject.call(output_filename: tmp_file.path,
+                 path:            '/fake/dir')
 
     csv = CSV.readlines(tmp_file.path)
     expect(csv.size).to eq(6)
   end
 
-  it 'writes co-ordinates it finds to a CSV file' do
-    expect(File).to receive(:write)
-  end
   it 'is executable from the command-line' do
     pending
+    fail
   end
   it 'scans the current working directory by default' do
-    pending
+    allow(Dir).to receive(:glob)
+                    .with("#{Dir.pwd}/**/*.jpg")
+                    .and_return(filenames)
+    subject.call(output_filename: tmp_file.path)
   end
+
   it 'accepts a directory as an optional parameter' do
     pending
+    fail
   end
 
   context 'output in different formats' do
     it 'can output to CSV' do
       pending
+      fail
     end
     it 'can output to HTML' do
       pending
+      fail
     end
   end
 end
