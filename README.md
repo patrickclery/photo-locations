@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/patrickclery/lendesk/tree/master.svg?style=svg)](https://circleci.com/gh/patrickclery/lendesk/tree/master)
+
 # Description
 
 Finds all images in a given directory, extracts their GPS info, then dumps that along with the filename into a CSV or HTML file.
