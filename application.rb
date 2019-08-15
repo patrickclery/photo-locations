@@ -14,7 +14,7 @@ OptionParser.new do |opts|
   opts.on("--html", "Output in HTML format (default is CSV)") do
     options[:format] = :html
   end
-  opts.on("-o FILE", "--output-file=FILE", String, "File to output to. (Default: 'image_gps_info.{csv,html}')") do |output_file|
+  opts.on("-o FILE", "--output-file=FILE", String, "File to output to. (Default: 'results.{csv,html}')") do |output_file|
     options[:output_file] = output_file
   end
   opts.on("-d DIR", "--target-directory=DIR", "Target directory to scan for JPG files. (Default: current directory)") do |target_directory|
@@ -28,6 +28,6 @@ end.parse!(into: {})
 
 options[:target_directory] ||= Dir.pwd
 options[:format]           ||= :csv
-options[:output_file]      ||= 'image_gps_info.' + (options[:format] == :csv ? 'csv' : 'html')
+options[:output_file]      ||= 'results.' + (options[:format] == :csv ? 'csv' : 'html')
 
 Lendesk::ImageDirectoryScanner.call(**options)
