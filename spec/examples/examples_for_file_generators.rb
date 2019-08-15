@@ -1,4 +1,7 @@
 RSpec.shared_examples 'examples_for_file_generators' do
+
+  it { should respond_to(:call).with_keywords(:target_directory, :output_file) }
+
   it 'scans the current working directory by default' do
     expect(Dir).to receive(:glob)
                      .with("#{Dir.pwd}/**/*.jpg")

@@ -11,8 +11,7 @@ RSpec.shared_context "stub_filenames_and_images" do
       "spec/data/gps_images/image_a.jpg"
     ]
   }
-  let(:tmp_filename) { 'rspec.csv' }
-  let(:tmp_file) { Tempfile.new(tmp_filename) }
+  let(:tmp_file) { Tempfile.new('rspec.output') }
 
   before(:each) do
     # Return 5 fake filenames if the app to read a directory
