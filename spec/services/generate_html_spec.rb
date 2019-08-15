@@ -12,9 +12,4 @@ RSpec.describe Lendesk::GenerateHTML do
     expect(html_file.size).to be_nonzero
   end
 
-  it 'is executable from the command-line' do
-    pending
-    fail
-  end
-
 end

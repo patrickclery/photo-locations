@@ -12,8 +12,4 @@ RSpec.describe Lendesk::GenerateCSV do
     expect(csv.size).to eq(6)
   end
 
-  it 'is executable from the command-line' do
-    pending
-    fail
-  end
 end
