@@ -2,8 +2,8 @@ module Lendesk
   class ImageDirectoryScanner
     class << self
 
-      def start
-
+      # This method is for starting it via CLI
+      def start_cli
         options = {}
         OptionParser.new do |opts|
           opts.banner = "Usage: application.rb [options]"

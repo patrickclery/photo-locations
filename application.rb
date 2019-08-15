@@ -7,4 +7,4 @@
 
 require './app/lendesk'
 
-Lendesk::ImageDirectoryScanner.start
+Lendesk::ImageDirectoryScanner.start_cli
