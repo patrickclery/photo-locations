@@ -15,7 +15,7 @@ module Lendesk
           end
 
           # Dump it all with Thamble
-          file.write Thamble.table(rows, headers: rows << %w( FILENAME LATITUDE LONGITUDE ))
+          file.write Thamble.table(rows, headers: %w( FILENAME LATITUDE LONGITUDE ))
         end
       end
 
