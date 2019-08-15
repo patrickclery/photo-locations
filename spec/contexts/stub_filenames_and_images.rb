@@ -4,31 +4,20 @@ RSpec.shared_context "stub_filenames_and_images" do
 
   let(:filenames) {
     [
-      "assets/images/resume/barchart.jpg",
-      "assets/images/resume/rubymine_macbook_pro.jpg",
-      "assets/images/resume/github_contributions.jpg",
-      "assets/images/resume/wordcloud.jpg",
-      "assets/images/resume/github_calendar.jpg"
+      "spec/data/gps_images/cats/image_e.jpg",
+      "spec/data/gps_images/image_d.jpg",
+      "spec/data/gps_images/image_b.jpg",
+      "spec/data/gps_images/image_c.jpg",
+      "spec/data/gps_images/image_a.jpg"
     ]
   }
   let(:tmp_filename) { 'rspec.csv' }
   let(:tmp_file) { Tempfile.new(tmp_filename) }
-
-  # If EXIFR is called, it'll return this
-  let!(:exif) { EXIFR::JPEG.new('./spec/data/DSCN0010.jpg') }
 
   before(:each) do
     # Return 5 fake filenames if the app to read a directory
     allow(Dir).to receive(:glob)
                     .with(any_args)
                     .and_return(filenames)
-
-    # Return fake image EXIF if the app access IO.read
-    filenames.each do |filename|
-      allow(EXIFR::JPEG).to receive(:new)
-                              .with(any_args)
-                              .and_return(exif)
-    end
   end
-
 end

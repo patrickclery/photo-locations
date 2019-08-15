@@ -3,7 +3,6 @@ require "bundler/setup"
 require "./app/lendesk"
 
 require 'contexts/stub_filenames_and_images'
-require 'examples/examples_for_file_generators'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

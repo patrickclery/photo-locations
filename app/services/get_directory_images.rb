@@ -18,8 +18,8 @@ module Lendesk
         EXIFR::JPEG.new(filename).tap do |info|
           return {
             filename:  filename,
-            latitude:  info.gps.latitude,
-            longitude: info.gps.longitude
+            latitude:  info&.gps&.latitude,
+            longitude: info&.gps&.longitude
           }
         end
       end
