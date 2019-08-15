@@ -11,6 +11,8 @@ RSpec.shared_context "stub_filenames_and_images" do
       "assets/images/resume/github_calendar.jpg"
     ]
   }
+  let(:tmp_filename) { 'rspec.csv' }
+  let(:tmp_file) { Tempfile.new(tmp_filename) }
 
   # If EXIFR is called, it'll return this
   let!(:exif) { EXIFR::JPEG.new('./spec/data/DSCN0010.jpg') }

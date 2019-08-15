@@ -2,11 +2,11 @@ module Lendesk
   class GenerateHTML
 
     class << self
-      def call(output_filename: 'image_gps_info.html', path: nil)
-        File.open(output_filename, "wb") do |file|
+      def call(output_file:, target_directory:)
+        File.open(output_file, "wb") do |file|
           # Add each image as a row
           rows = []
-          GetDirectoryImages.call(path).each do |image|
+          GetDirectoryImages.call(target_directory).each do |image|
             rows << [
               image[:filename],
               image[:latitude],
@@ -15,7 +15,7 @@ module Lendesk
           end
 
           # Dump it all with Thamble
-          puts Thamble.table(rows, headers: rows << %w( FILENAME LATITUDE LONGITUDE ))
+          file.write Thamble.table(rows, headers: rows << %w( FILENAME LATITUDE LONGITUDE ))
         end
       end
 

@@ -2,13 +2,12 @@ module Lendesk
   class GenerateCSV
 
     class << self
-      def call(output_filename: 'image_gps_info.csv', path: nil)
-
-        CSV.open(output_filename, "wb") do |csv|
+      def call(output_file:, target_directory:)
+        CSV.open(output_file, "wb") do |csv|
           csv << %w( FILENAME LATITUDE LONGITUDE )
 
           # Add each image as a row
-          GetDirectoryImages.call(path).each do |image|
+          GetDirectoryImages.call(target_directory).each do |image|
             csv << [
               image[:filename],
               image[:latitude],
