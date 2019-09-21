@@ -1,3 +1,5 @@
+> **Preface:** This is my solution to a coding challenge I was given by an employer for a Senior Ruby Developer position. Their response was that I nailed it. At the in-person interview, we reviewed my code against their solution, and the structure was nearly identical, showing I followed the same development principles their developers had used with Test-Driven Development.
+
 [![CircleCI](https://circleci.com/gh/patrickclery/lendesk/tree/master.svg?style=svg)](https://circleci.com/gh/patrickclery/lendesk/tree/master)
 
 # Description
